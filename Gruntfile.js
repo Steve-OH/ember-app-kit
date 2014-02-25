@@ -7,51 +7,48 @@ module.exports = function(grunt) {
   //
   // * for SCSS (without SASS), run `npm install --save-dev grunt-sass`
   // * for SCSS/SASS support (may be slower), run
-  //   `npm install --save-dev grunt-contrib-sass`
-  //   This depends on the ruby sass gem, which can be installed with
-  //   `gem install sass`
+  // `npm install --save-dev grunt-contrib-sass`
+  // This depends on the ruby sass gem, which can be installed with
+  // `gem install sass`
   // * for Compass, run `npm install --save-dev grunt-contrib-compass`
-  //   This depends on the ruby compass gem, which can be installed with
-  //   `gem install compass`
-  //   You should not install SASS if you have installed Compass.
+  // This depends on the ruby compass gem, which can be installed with
+  // `gem install compass`
+  // You should not install SASS if you have installed Compass.
   //
   // * for LESS, run `npm install --save-dev grunt-contrib-less`
   //
   // * for Stylus/Nib, `npm install --save-dev grunt-contrib-stylus`
   //
   // * for Emblem, run the following commands:
-  //   `npm uninstall --save-dev grunt-ember-templates`
-  //   `npm install --save-dev grunt-emblem`
-  //   `bower install emblem.js --save`
+  // `npm uninstall --save-dev grunt-ember-templates`
+  // `npm install --save-dev grunt-emblem`
+  // `bower install emblem.js --save`
   //
   // * For EmberScript, run `npm install --save-dev grunt-ember-script`
   //
   // * for LiveReload, `npm install --save-dev connect-livereload`
   //
   // * for displaying the execution time of the grunt tasks,
-  //   `npm install --save-dev time-grunt`
+  // `npm install --save-dev time-grunt`
   //
   // * for minimizing the index.html at the end of the dist task
-  //   `npm install --save-dev grunt-contrib-htmlmin`
+  // `npm install --save-dev grunt-contrib-htmlmin`
   //
   // * for minimizing images in the dist task
-  //   `npm install --save-dev grunt-contrib-imagemin`
+  // `npm install --save-dev grunt-contrib-imagemin`
   //
   // * for using images based CSS sprites (http://youtu.be/xD8DW6IQ6r0)
-  //   `npm install --save-dev grunt-fancy-sprites`
-  //   `bower install --save fancy-sprites-scss`
+  // `npm install --save-dev grunt-fancy-sprites`
+  // `bower install --save fancy-sprites-scss`
   //
   // * for automatically adding CSS vendor prefixes (autoprefixer)
-  //   `npm install --save-dev grunt-autoprefixer`
+  // `npm install --save-dev grunt-autoprefixer`
   //
 
   var Helpers = require('./tasks/helpers'),
       filterAvailable = Helpers.filterAvailableTasks,
       _ = grunt.util._,
-      path = require('path'),
-      // optionally skip file name hashing: if noRevHash is included as a field in package.json and has a truthy value, skip
-      // file name hashing during dist builds
-      revStepName  = !!grunt.file.readJSON('package.json').noRevHash ? '' : 'rev';
+      path = require('path');
 
   Helpers.pkg = require("./package.json");
 
@@ -158,7 +155,7 @@ module.exports = function(grunt) {
                      // 'svgmin',
                      'copy:dist', // Copies files not covered by concat and imagemin
 
-                     revStepName, // Prepends 8 char hash value to filenames (optional, see above)
+                     'rev', // Appends 8 char hash value to filenames
                      'usemin', // Replaces file references
                      'htmlmin:dist' // Removes comments and whitespace
                      ]));
@@ -230,3 +227,4 @@ module.exports = function(grunt) {
 
   grunt.initConfig(config);
 };
+
